@@ -11,9 +11,9 @@ import {
 } from "./actionTypes";
 
 const initState = {
-  data: [...datas.vehicle],
-  copyOfData: [...datas.vehicle],
-  filteredData: [...datas.vehicle],
+  data: [...datas.vehicle.reverse()],
+  copyOfData: [...datas.vehicle.reverse()],
+  filteredData: [...datas.vehicle.reverse()],
   user: [],
 };
 

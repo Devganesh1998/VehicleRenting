@@ -1,14 +1,16 @@
-import React from 'react';
-import './App.css';
-import Routing from './Router/Routing'
-import { BrowserRouter } from 'react-router-dom'
+import React from "react";
+import Routing from "./Router/Routing";
+import { BrowserRouter } from "react-router-dom";
+import "antd/dist/antd.css";
+import "aos/dist/aos.css";
+import AOS from "aos";
+
+AOS.init();
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routing />
-      </div>
+      <Routing />
     </BrowserRouter>
   );
 }

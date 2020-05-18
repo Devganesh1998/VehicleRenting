@@ -7,6 +7,7 @@ import {
   UPDATE_VEHICLE,
   FILTER_EQUAL_DATA,
   SORT_DATA,
+  CHANGE_AVAILABILITY,
 } from "./actionTypes";
 
 const initState = {
@@ -15,7 +16,7 @@ const initState = {
   filteredData: [...datas.vehicle],
   user: [],
 };
-console.log(initState.data);
+
 const rentReducer = (state = initState, action) => {
   switch (action.type) {
     case SEARCH_VEHICLE:
@@ -54,6 +55,14 @@ const rentReducer = (state = initState, action) => {
         ...state,
         [dataDestination]: [...temp],
       };
+
+    case CHANGE_AVAILABILITY:
+      state.data.forEach((vehicle) => {
+        if (vehicle.id === action.payload) {
+          vehicle.available = false;
+        }
+      });
+      return state;
 
     case UPDATE_VEHICLE:
       action.payload.id = action.id;

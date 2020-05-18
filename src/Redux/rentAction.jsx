@@ -6,6 +6,7 @@ import {
   UPDATE_VEHICLE,
   FILTER_EQUAL_DATA,
   SORT_DATA,
+  CHANGE_AVAILABILITY,
 } from "./actionTypes";
 
 export const searchVehicle = (name) => {
@@ -19,6 +20,13 @@ export const filterVehicle = (item) => {
   return {
     type: FILTER_VEHICLE,
     payload: item,
+  };
+};
+
+export const ChangeAvailability = (VehicleID) => {
+  return {
+    type: CHANGE_AVAILABILITY,
+    payload: VehicleID,
   };
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import UserTable from "./UserTable";
-import { sortUsers } from "../../Redux/userAction";
+import { sortUsers } from "../../../Redux/userAction";
 
 class ViewAllUsers extends React.Component {
   constructor(props) {
@@ -28,6 +28,13 @@ class ViewAllUsers extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <div>
+          <h5 style={{ color: "red", fontWeight: "700" }}>
+            Click on the Table header to sort in both Ascending and Descending
+            order And click on the Name to View both User Details and History of
+            bookings.
+          </h5>
+        </div>
         <UserTable handleSort={this.handleSort} {...this.props} />
       </React.Fragment>
     );

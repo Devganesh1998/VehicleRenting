@@ -9,6 +9,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import styles from "../../Comp.module.css";
 
 export default (props) => {
   let { Users, handleSort } = props;
@@ -17,48 +18,27 @@ export default (props) => {
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
-            <TableRow>
-              <TableCell
-                onClick={() => handleSort("userId", true)}
-                style={{ border: "1px solid red" }}
-              >
-                User ID
+            <TableRow className={styles.tableHeader}>
+              <TableCell onClick={() => handleSort("userId", true)}>
+                <button>User ID</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("name", false)}
-                style={{ border: "1px solid red" }}
-              >
-                Name
+              <TableCell onClick={() => handleSort("name", false)}>
+                <button>Name</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("age", true)}
-                style={{ border: "1px solid red" }}
-              >
-                Age
+              <TableCell onClick={() => handleSort("age", true)}>
+                <button>Age</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("email", false)}
-                style={{ border: "1px solid red" }}
-              >
-                Email ID
+              <TableCell onClick={() => handleSort("email", false)}>
+                <button>Email ID</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("mobile", true)}
-                style={{ border: "1px solid red" }}
-              >
-                Phone Number
+              <TableCell onClick={() => handleSort("mobile", true)}>
+                <button>Phone Number</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("password", false)}
-                style={{ border: "1px solid red" }}
-              >
-                Password
+              <TableCell onClick={() => handleSort("password", false)}>
+                <button>Password</button>
               </TableCell>
-              <TableCell
-                onClick={() => handleSort("lisenceId", false)}
-                style={{ border: "1px solid red" }}
-              >
-                Lisence Number
+              <TableCell onClick={() => handleSort("lisenceId", false)}>
+                <button>Lisence Number</button>
               </TableCell>
             </TableRow>
           </TableHead>

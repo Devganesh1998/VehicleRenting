@@ -6,20 +6,21 @@ import {
   SORT_USER_DATA,
   FILTER_EQUAL_USER_DATA,
   UPDATE_BILLS,
+  BOOK_VEHICLE,
 } from "./actionTypes";
 
-export const register_user = (datas) => {
+export const register_user = (data) => {
   return {
     type: REGISTER_USER,
-    datas,
+    data,
   };
 };
 
-export const login_user = (email, pwd) => {
+export const login_user = (email, password) => {
   return {
     type: LOGIN_USER,
     email,
-    pwd,
+    password,
   };
 };
 
@@ -37,6 +38,13 @@ export const booking_data = (start, end, destination, vehicle) => {
     end,
     destination,
     vehicle,
+  };
+};
+
+export const bookVehicle = (data) => {
+  return {
+    type: BOOK_VEHICLE,
+    payload: data,
   };
 };
 

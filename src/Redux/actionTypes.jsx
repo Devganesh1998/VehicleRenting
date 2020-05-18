@@ -8,6 +8,8 @@ export const BOOKING_DATA = "BOOKING_DATA";
 
 export const ADD_VEHICLE = "ADD_VEHICLE";
 export const UPDATE_VEHICLE = "UPDATE_VEHICLE";
+export const BOOK_VEHICLE = "BOOK_VEHICLE";
+export const CHANGE_AVAILABILITY = "CHANGE_AVAILABILITY";
 
 export const SORT_DATA = "SORT_DATA";
 export const UPDATE_BILLS = "UPDATE_BILLS";

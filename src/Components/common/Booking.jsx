@@ -1,140 +1,177 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { booking_data } from "../../Redux/userAction";
 import ISLoader from "./Isloader";
-import swal from "sweetalert"
+import swal from "sweetalert";
+import { Select, Descriptions, DatePicker } from "antd";
+import styles from "../Comp.module.css";
+import { Button } from "@material-ui/core";
 
 function Booking(props) {
-    console.log(props)
-    const [start, setStart] = useState(0);
-    const [end, setEnd] = useState(0)
-    const [destination, setDestination] = useState(0)
+  const { Option } = Select;
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(0);
+  const [destination, setDestination] = useState(0);
 
+  let dt = new Date();
+  let dateNow = dt.getUTCDate();
+  let year = dt.getUTCFullYear();
+  let month = dt.getUTCMonth();
+  month = month + 1;
 
-    let dt = new Date();
-    let dateNow = dt.getUTCDate();
-    let year = dt.getUTCFullYear();
-    let month = dt.getUTCMonth();
-    month = month + 1;
+  const [loading, setLoading] = useState(false);
+  const [direct, setdirect] = useState(false);
+  let name = props.match.params.name;
+  let vehicle = props.data.find((ele) => {
+    return ele.modal_name === name;
+  });
 
-    const [loading, setLoading] = useState(false);
-    const [direct, setdirect] = useState(false);
-    let name = props.match.params.name;
-    let vehicle = props.data.find(ele => {
-        return ele.modal_name === name;
-    });
-
-    const clickHandler = () => {
-        if (start.length > 0 && end.length > 0 && destination.length > 0) {
-            props.booking_data(start, end, destination, vehicle)
-            setLoading(true);
-            const timer = setTimeout(() => {
-                setLoading(false);
-                setdirect(true);
-            }, 2000);
-            return () => clearTimeout(timer);
-        }
-        else {
-            swal("All Fields Are Required")
-        }
-    };
-
-    const handleChange = (e) => {
-        if (e.target.name === "start")
-            setStart(e.target.value)
-        else if (e.target.name === "end")
-            setEnd(e.target.value)
-        else
-            setDestination(e.target.value)
+  const clickHandler = () => {
+    if (start.length > 0 && end.length > 0 && destination.length > 0) {
+      props.booking_data(start, end, destination, vehicle);
+      setLoading(true);
+      const timer = setTimeout(() => {
+        setLoading(false);
+        setdirect(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    } else {
+      swal("All Fields Are Required");
     }
+  };
 
-    const { is_auth, user_data } = props
-    //console.log(start, end, destination)
-    //console.log(user_data)
+  const handleChange = (value) => {
+    setDestination(value);
+  };
 
+  const SetStartDate = (...value) => {
+    setStart(value[1]);
+  };
 
-    if (!is_auth) {
-        return (<Redirect to='/login' />)
+  const SetEndDate = (...value) => {
+    setEnd(value[1]);
+  };
+
+  const { is_auth, currentUser } = props;
+
+  if (!is_auth) {
+    return <Redirect to="/login" />;
+  }
+
+  if (loading) {
+    return <ISLoader />;
+  } else if (direct) {
+    return <Redirect to={`${props.match.url}/pay`} />;
+  } else {
+    let vehicleType = "Car";
+    const destination = "destination";
+    if (vehicle.category === "bike") {
+      vehicleType = "Bike";
     }
-
-    if (loading) {
-        return <ISLoader />;
-    }
-
-    else if (direct) {
-        return (<Redirect to={`${props.match.url}/pay`} />)
-    }
-
-    else {
-        return (
+    return (
+      <div style={{ minHeight: "90vh" }}>
+        <h3 style={{ marginTop: "20px" }}>Welcome {currentUser.name}</h3>
+        <div className={styles.description}>
+          <img
+            src={vehicle.img_url}
+            alt="VehicleImg"
+            data-aos="fade-right"
+            data-aos-offset="200"
+            data-aos-delay="600"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          />
+          <div
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-delay="600"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
+            <Descriptions title={`${vehicleType} Info`} bordered>
+              <Descriptions.Item label="Company">
+                {vehicle.company}
+              </Descriptions.Item>
+              <Descriptions.Item label="Model Name">
+                {vehicle.modal_name}
+              </Descriptions.Item>
+              <Descriptions.Item label="Location">
+                {vehicle.location}
+              </Descriptions.Item>
+              <Descriptions.Item label="Cost per Day">
+                {vehicle.cost.per_day}
+              </Descriptions.Item>
+              <Descriptions.Item label="Cost after 5 Days">
+                {vehicle.cost.after_5}
+              </Descriptions.Item>
+              <Descriptions.Item label="Cost after 10 Days">
+                {vehicle.cost.after_10}
+              </Descriptions.Item>
+              <Descriptions.Item label="Vehicle Number">
+                {vehicle.vehicle_no}
+              </Descriptions.Item>
+            </Descriptions>
+          </div>
+        </div>
+        <div
+          style={{ margin: "30px 0" }}
+          data-aos="fade-up"
+          data-aos-offset="120"
+          data-aos-delay="800"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+        >
+          <h5 style={{ margin: "30px 0" }}>Fill to Get Payment Details</h5>
+          <div className={styles.dateSelectors}>
+            <Select
+              defaultValue="disabled"
+              style={{ width: "180px" }}
+              size="large"
+              onChange={handleChange}
+            >
+              <Option value="disabled" disabled>
+                Select Destination
+              </Option>
+              <Option value="chennai">Chennai</Option>
+              <Option value="trichy">Trichy</Option>
+              <Option value="bangalore">Bangalore</Option>
+              <Option value="hyderabad">Hyderabad</Option>
+            </Select>
             <div>
-                <h3 className="text-dark">Welcome {user_data[0].name}</h3>
-                <div class="card mb-3 mx-auto" style={{ maxWidth: "540px" }}>
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img height="100%" width="100px" src={vehicle.img_url} class="card-img" alt="..." />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><u>{vehicle.category} Details</u></h5>
-                                <p className="card-title text-center">Company : <strong>{vehicle.company}</strong></p>
-                                <p className="card-text text-center">Modal : <strong>{vehicle.modal_name}</strong></p>
-                                <p className="card-text text-center">Location : <strong>{vehicle.location}</strong></p>
-                                <p className="card-text text-center">cost per day : <strong>{vehicle.cost.per_day}</strong></p>
-                                <p className="card-text text-center">cost after 5 days : <strong>{vehicle.cost.after_5}</strong></p>
-                                <p className="card-text text-center">cost sfter 10 days : <strong>{vehicle.cost.after_10}</strong></p>
-                                <p className="card-text text-center">Vehicle No : <strong>{vehicle.vehicle_no}</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 m-auto">
-                    <h5>Fill details</h5>
-                    <div className="col-md-6 offset-1 mx-auto d-block">
-                        <select
-                            className="form-control"
-                            onChange={handleChange}
-                        >
-                            <option disabled selected className="text-center">
-                                Select Destination
-                            </option>
-                            <option>chennai</option>
-                            <option>trichy</option>
-                            <option>bangalore</option>
-                            <option>hyderabad</option>
-                        </select>
-                    </div>
-                    <span className="form-control m-2">
-                        Start Date :
-                    <input type="date" name="start" onChange={handleChange} />
-                    </span>
-                    <span className="form-control m-2 ">
-                        End Date :{" "}
-                        <input
-                            type="date"
-                            name="end"
-                            min={year + "--" + month + "-" + dateNow}
-                            onChange={handleChange}
-                        />
-                    </span>
-
-                    <button className="btn btn-success my-4" onClick={clickHandler}>
-                        Get Pay Details
-                    </button>
-                </div>
-            </div >
-        );
-    }
+              <h6>Start Date :</h6>
+              <DatePicker size="large" onChange={SetStartDate} />
+            </div>
+            <div>
+              <h6>End Date :</h6>
+              <DatePicker size="large" onChange={SetEndDate} />
+            </div>
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ margin: "20px 0" }}
+            onClick={clickHandler}
+          >
+            Get Pay Details
+          </Button>
+        </div>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-    data: state.rent.data,
-    is_auth: state.user.isauth,
-    user_data: state.user.user_data
+const mapStateToProps = (state) => ({
+  data: state.rent.data,
+  is_auth: state.user.isauth,
+  currentUser: state.user.currentUser,
 });
-const mapDispatchToProps = dispatch => ({
-    booking_data: (start, end, destination, vehicle) => dispatch(booking_data(start, end, destination, vehicle))
+const mapDispatchToProps = (dispatch) => ({
+  booking_data: (start, end, destination, vehicle) =>
+    dispatch(booking_data(start, end, destination, vehicle)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Booking);

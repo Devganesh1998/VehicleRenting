@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ViewTable from "./ViewTable";
 import { Button, Select, MenuItem } from "@material-ui/core";
-import { filterVehicleEq, sortVehicles } from "../../Redux/rentAction";
+import { filterVehicleEq, sortVehicles } from "../../../Redux/rentAction";
 
 class ViewAllVehicles extends React.Component {
   constructor(props) {
@@ -40,9 +40,9 @@ class ViewAllVehicles extends React.Component {
 
   render() {
     const { category, lesserThan, greaterThan, available } = this.state;
-    console.log("this.props", this.props);
     return (
       <React.Fragment>
+        <h5>Filters</h5>
         <Select
           onChange={this.handleChange}
           name="available"
@@ -63,6 +63,13 @@ class ViewAllVehicles extends React.Component {
           <MenuItem value={"car"}>Car</MenuItem>
           <MenuItem value={"bike"}>Bike</MenuItem>
         </Select>
+        <div>
+          <h5 style={{ color: "red", fontWeight: "700" }}>
+            Click on the Table header to sort in both Ascending and Descending
+            order And click on the Model name to View and Update the respective
+            Vehicle.
+          </h5>
+        </div>
         {/* <Select
           onChange={this.handleChange}
           name="lesserThan"

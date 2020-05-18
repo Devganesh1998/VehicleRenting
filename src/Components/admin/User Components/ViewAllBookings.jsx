@@ -11,8 +11,13 @@ import {
   Paper,
 } from "@material-ui/core";
 import { connect } from "react-redux";
-import { updateBills, sortBills, filterBillsEq } from "../../Redux/userAction";
+import {
+  updateBills,
+  sortBills,
+  filterBillsEq,
+} from "../../../Redux/userAction";
 import { Link } from "react-router-dom";
+import styles from "../../Comp.module.css";
 
 class ViewAllBookings extends React.Component {
   constructor(props) {
@@ -59,6 +64,7 @@ class ViewAllBookings extends React.Component {
     let { Bills, Users } = this.props;
     return (
       <React.Fragment>
+        <h5>Filters</h5>
         <Select
           onChange={this.handleChange}
           name="category"
@@ -69,69 +75,50 @@ class ViewAllBookings extends React.Component {
           <MenuItem value={"car"}>Car</MenuItem>
           <MenuItem value={"bike"}>Bike</MenuItem>
         </Select>
+        <div>
+          <h5 style={{ color: "red", fontWeight: "700" }}>
+            Click on the Table header to sort in both Ascending and Descending
+            order And click on the Bill Id to View which user Booked which
+            Vehicle.
+          </h5>
+        </div>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
-              <TableRow>
-                <TableCell
-                  onClick={() => this.handleSort("billId", true)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Bill ID
+              <TableRow className={styles.tableHeader}>
+                <TableCell onClick={() => this.handleSort("billId", true)}>
+                  <button>Bill ID</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("billAmount", true)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Bill Amount
+                <TableCell onClick={() => this.handleSort("billAmount", true)}>
+                  <button>Bill Amount</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("category", false)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Vehicle Category
+                <TableCell onClick={() => this.handleSort("category", false)}>
+                  <button>Vehicle Category</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("vehicle_no", true)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Vehicle Number
+                <TableCell onClick={() => this.handleSort("vehicle_no", true)}>
+                  <button>Vehicle Number</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("startDate", false)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Start date
+                <TableCell onClick={() => this.handleSort("startDate", false)}>
+                  <button>Start date</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("endDate", false)}
-                  style={{ border: "1px solid red" }}
-                >
-                  End date
+                <TableCell onClick={() => this.handleSort("endDate", false)}>
+                  <button>End date</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("bookedDate", false)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Booked date
+                <TableCell onClick={() => this.handleSort("bookedDate", false)}>
+                  <button>Booked date</button>
                 </TableCell>
-                <TableCell
-                  onClick={() => this.handleSort("origin", false)}
-                  style={{ border: "1px solid red" }}
-                >
-                  Origin
+                <TableCell onClick={() => this.handleSort("origin", false)}>
+                  <button>Origin</button>
                 </TableCell>
                 <TableCell
                   onClick={() => this.handleSort("destination", false)}
-                  style={{ border: "1px solid red" }}
                 >
-                  Destination
+                  <button>Destination</button>
                 </TableCell>
                 <TableCell
                   onClick={() => this.handleSort("paymentMethod", false)}
-                  style={{ border: "1px solid red" }}
                 >
-                  Payment Mode
+                  <button>Payment Mode</button>
                 </TableCell>
               </TableRow>
             </TableHead>

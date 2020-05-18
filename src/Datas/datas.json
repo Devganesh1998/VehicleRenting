@@ -36,9 +36,9 @@
       "id": 2,
       "category": "car",
       "cost": {
-        "per_day": 10,
-        "after_5": 8,
-        "after_10": 7
+        "per_day": 1000,
+        "after_5": 800,
+        "after_10": 750
       },
       "location": "chennai",
       "vehicle_no": "TN 22 AF 34632",
@@ -57,7 +57,7 @@
       },
       "location": "trichy",
       "vehicle_no": "TN 20 AF 9131",
-      "available": false,
+      "available": true,
       "img_url": "https://images.summitmedia-digital.com/topgear/images/2020/04/04/bmw-r18-main-1200-1585966951.jpg"
     },
     {
@@ -66,9 +66,9 @@
       "id": 4,
       "category": "car",
       "cost": {
-        "per_day": 12,
-        "after_5": 10,
-        "after_10": 9
+        "per_day": 1200,
+        "after_5": 1000,
+        "after_10": 900
       },
       "location": "trichy",
       "vehicle_no": "TN 21 HG 38472",
@@ -96,9 +96,9 @@
       "id": 6,
       "category": "car",
       "cost": {
-        "per_day": 18,
-        "after_5": 13,
-        "after_10": 6
+        "per_day": 1800,
+        "after_5": 1700,
+        "after_10": 1600
       },
       "location": "bangalore",
       "vehicle_no": "TN 61 UY 29834",
@@ -126,9 +126,9 @@
       "id": 8,
       "category": "car",
       "cost": {
-        "per_day": 9,
-        "after_5": 7,
-        "after_10": 6
+        "per_day": 900,
+        "after_5": 700,
+        "after_10": 600
       },
       "location": "hyderabad",
       "vehicle_no": "TN 41 KJ 98723",
@@ -156,9 +156,9 @@
       "id": 10,
       "category": "car",
       "cost": {
-        "per_day": 11,
-        "after_5": 5,
-        "after_10": 7
+        "per_day": 1100,
+        "after_5": 900,
+        "after_10": 800
       },
       "location": "chennai",
       "vehicle_no": "TN 87 ER 36427",
@@ -186,9 +186,9 @@
       "id": 12,
       "category": "car",
       "cost": {
-        "per_day": 14,
-        "after_5": 8,
-        "after_10": 9
+        "per_day": 1400,
+        "after_5": 1200,
+        "after_10": 1100
       },
       "location": "trichy",
       "vehicle_no": "TN 45 UI 82389",
@@ -216,9 +216,9 @@
       "id": 14,
       "category": "car",
       "cost": {
-        "per_day": 15,
-        "after_5": 9,
-        "after_10": 8
+        "per_day": 1500,
+        "after_5": 900,
+        "after_10": 800
       },
       "location": "bangalore",
       "vehicle_no": "TN 44 WE 67632",
@@ -246,9 +246,9 @@
       "id": 16,
       "category": "car",
       "cost": {
-        "per_day": 20,
-        "after_5": 14,
-        "after_10": 12
+        "per_day": 2000,
+        "after_5": 1400,
+        "after_10": 1200
       },
       "location": "hyderabad",
       "vehicle_no": "TN 42 VG 67632",
@@ -276,9 +276,9 @@
       "id": 18,
       "category": "car",
       "cost": {
-        "per_day": 13,
-        "after_5": 8,
-        "after_10": 6
+        "per_day": 1300,
+        "after_5": 1200,
+        "after_10": 900
       },
       "location": "chennai",
       "vehicle_no": "TN 78 VG 63432",
@@ -306,9 +306,9 @@
       "id": 20,
       "category": "car",
       "cost": {
-        "per_day": 19,
-        "after_5": 13,
-        "after_10": 11
+        "per_day": 1900,
+        "after_5": 1300,
+        "after_10": 1100
       },
       "location": "trichy",
       "vehicle_no": "TN 42 JK 634292",
@@ -336,9 +336,9 @@
       "id": 22,
       "category": "car",
       "cost": {
-        "per_day": 10,
-        "after_5": 8,
-        "after_10": 7
+        "per_day": 1000,
+        "after_5": 800,
+        "after_10": 700
       },
       "location": "chennai",
       "vehicle_no": "TN 22 AF 34632",
@@ -366,9 +366,9 @@
       "id": 24,
       "category": "car",
       "cost": {
-        "per_day": 12,
-        "after_5": 10,
-        "after_10": 9
+        "per_day": 1200,
+        "after_5": 1000,
+        "after_10": 900
       },
       "location": "trichy",
       "vehicle_no": "TN 21 HG 38472",
@@ -396,9 +396,9 @@
       "id": 26,
       "category": "car",
       "cost": {
-        "per_day": 18,
-        "after_5": 13,
-        "after_10": 6
+        "per_day": 1800,
+        "after_5": 1300,
+        "after_10": 1200
       },
       "location": "bangalore",
       "vehicle_no": "TN 61 UY 29834",
@@ -426,9 +426,9 @@
       "id": 28,
       "category": "car",
       "cost": {
-        "per_day": 9,
-        "after_5": 7,
-        "after_10": 6
+        "per_day": 900,
+        "after_5": 700,
+        "after_10": 600
       },
       "location": "hyderabad",
       "vehicle_no": "TN 41 KJ 98723",
@@ -456,9 +456,9 @@
       "id": 30,
       "category": "car",
       "cost": {
-        "per_day": 11,
-        "after_5": 5,
-        "after_10": 7
+        "per_day": 1100,
+        "after_5": 900,
+        "after_10": 800
       },
       "location": "chennai",
       "vehicle_no": "TN 87 ER 36427",
@@ -486,9 +486,9 @@
       "id": 32,
       "category": "car",
       "cost": {
-        "per_day": 14,
-        "after_5": 8,
-        "after_10": 9
+        "per_day": 1400,
+        "after_5": 1200,
+        "after_10": 900
       },
       "location": "trichy",
       "vehicle_no": "TN 45 UI 82389",
@@ -516,9 +516,9 @@
       "id": 34,
       "category": "car",
       "cost": {
-        "per_day": 15,
-        "after_5": 9,
-        "after_10": 8
+        "per_day": 1500,
+        "after_5": 1200,
+        "after_10": 1000
       },
       "location": "bangalore",
       "vehicle_no": "TN 44 WE 67632",
@@ -546,9 +546,9 @@
       "id": 36,
       "category": "car",
       "cost": {
-        "per_day": 20,
-        "after_5": 14,
-        "after_10": 12
+        "per_day": 2000,
+        "after_5": 1400,
+        "after_10": 1200
       },
       "location": "hyderabad",
       "vehicle_no": "TN 42 VG 67632",
@@ -576,9 +576,9 @@
       "id": 38,
       "category": "car",
       "cost": {
-        "per_day": 13,
-        "after_5": 8,
-        "after_10": 6
+        "per_day": 1300,
+        "after_5": 800,
+        "after_10": 600
       },
       "location": "chennai",
       "vehicle_no": "TN 78 VG 63432",
@@ -606,9 +606,9 @@
       "id": 40,
       "category": "car",
       "cost": {
-        "per_day": 19,
-        "after_5": 13,
-        "after_10": 11
+        "per_day": 1900,
+        "after_5": 1300,
+        "after_10": 1100
       },
       "location": "trichy",
       "vehicle_no": "TN 42 JK 634292",

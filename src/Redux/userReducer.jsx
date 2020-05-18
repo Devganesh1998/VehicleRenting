@@ -6,6 +6,7 @@ import {
   UPDATE_BILLS,
   FILTER_EQUAL_USER_DATA,
   SORT_USER_DATA,
+  BOOK_VEHICLE,
 } from "./actionTypes";
 import user_date from "../Datas/user.json";
 
@@ -14,34 +15,34 @@ const initState = {
   is_error: false,
   user_data: [...user_date.users],
   booking: [],
+  currentUser: user_date.users[0],
   AllBills: "",
 };
 
-console.log(initState.user_data);
-
 const userReducer = (state = initState, action) => {
-  console.log(state.user_data);
   switch (action.type) {
     case REGISTER_USER:
       return {
         ...state,
-        isauth: true,
-        user_data: [...state.user_data, action.datas],
+        user_data: [...state.user_data, action.data],
       };
 
     case LOGIN_USER:
-      let get_user = state.user_data.filter(
+      let get_user = state.user_data.find(
         (item) => item.email === action.email
       );
-      if (
-        get_user[0].email === action.email &&
-        get_user[0].pwd === action.pwd
-      ) {
-        return {
-          ...state,
-          isauth: true,
-          is_error: false,
-        };
+      if (!(typeof get_user === "undefined")) {
+        if (
+          get_user.email === action.email &&
+          get_user.password === action.password
+        ) {
+          return {
+            ...state,
+            isauth: true,
+            is_error: false,
+            currentUser: get_user,
+          };
+        }
       }
 
       return {
@@ -54,6 +55,7 @@ const userReducer = (state = initState, action) => {
       return {
         ...state,
         isauth: false,
+        currentUser: [],
       };
 
     case BOOKING_DATA:
@@ -66,6 +68,12 @@ const userReducer = (state = initState, action) => {
       return {
         ...state,
         booking: temp,
+      };
+
+    case BOOK_VEHICLE:
+      state.currentUser.history.push(action.payload);
+      return {
+        ...state,
       };
 
     case UPDATE_BILLS:
@@ -99,7 +107,6 @@ const userReducer = (state = initState, action) => {
       let { fieldName, sortType, isNumber, sortDataType } = action.payload;
       fieldName = fieldName.split(".");
       let data = state[sortDataType];
-      console.log("sortDataType , data", sortDataType, data);
       if (sortType === "ASCENDING") {
         let sorted = data.sort((a, b) => {
           let aNum = a,

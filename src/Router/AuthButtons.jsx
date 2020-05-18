@@ -44,9 +44,11 @@ export default (props) => {
           </DropdownMenu>
         </UncontrolledDropdown>
         <NavItem>
-          <Button variant="contained" color="primary" onClick={logout}>
-            Log Out
-          </Button>
+          <Link to="/">
+            <Button variant="contained" color="primary" onClick={logout}>
+              Log Out
+            </Button>
+          </Link>
         </NavItem>
       </React.Fragment>
     );
